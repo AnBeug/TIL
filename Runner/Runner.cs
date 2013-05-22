@@ -32,6 +32,7 @@ namespace TIL
             AnonymousMethods.Main();
 
             Console.WriteLine("---- LINQ ----------------");
+            LinqExamples.Main();
 
             // Hold the console until a key press.
             Console.ReadKey();
