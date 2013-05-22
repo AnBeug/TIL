@@ -55,22 +55,18 @@ namespace TIL
         /// </summary>
         public static void ExpressionsVersusMethods(List<string> list)
         {
+            Console.WriteLine("Original List:");
+            list.ForEach(s => Console.WriteLine("\t{0}", s));
+
+            Console.WriteLine("Filtered List:");
             var newList = from name in list
                           where name.Contains("Anne")
                           select name;
-            Console.WriteLine("Original List:");
-            list.ForEach(delegate(string s)
-                {
-                    Console.WriteLine("\t{0}", s);
-                });
+            newList.ToList<string>().ForEach(s => Console.WriteLine("\t{0}", s));
 
-            Console.WriteLine("Filtered List:");
-            newList.ToList<string>().ForEach(delegate(string s)
-                {
-                    Console.WriteLine("\t{0}", s);
-                });
+            Console.WriteLine("Filtered List #2:");
+            var newList2 = list.Where<string>(name => name.Contains("Anne"));
+            newList2.ToList<string>().ForEach(s => Console.WriteLine("\t{0}", s));
         }
-
-
     }
 }
