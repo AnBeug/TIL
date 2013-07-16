@@ -46,9 +46,6 @@ namespace TIL
             // Print with another method.
             Print("\nWith FancyPrint(string) as Action<T>.");
             list.ForEach(FancyPrint);
-
-            // Hold the console until a key press.
-            Console.ReadKey();
         }
 
         /// <summary>

@@ -22,25 +22,51 @@ namespace TIL
     {
         public static void Main()
         {
-        IList<string> list = new List<string>
+            IEnumerable<string> list = new List<string>
             {
-                "One",
-                "Two",
-                "Three",
-                "Four"
+                "Anne Susan",
+                "Alison Elizabeth",
+                "Katherine Anne",
+                "Catherine Ann",
+                "Jennifer Anne",
+                "Amy Elizabeth",
+                "Carol Susan"
             };
+
+            DoForEach(list);
+
+            ExpressionsVersusMethods((List<string>)list);
         }
 
         /// <summary>
         /// ForEach can only be used on a list.
+        /// You can get a list from an <see cref="IEnumerable{T}"/>,
+        /// but it creates a 2nd copy of the list.
         /// </summary>
         /// <param name="theList"></param>
-        private void DoForEach(List<string> theList)
+        private static void DoForEach(IEnumerable<string> theList)
         {
-            theList.ForEach(delegate
-                {
+            theList.ToList<string>().ForEach(Console.WriteLine);
+        }
 
-                });
+        /// <summary>
+        /// You can use linq two main ways: as query expressions
+        /// or as method calls.
+        /// </summary>
+        public static void ExpressionsVersusMethods(List<string> list)
+        {
+            Console.WriteLine("Original List:");
+            list.ForEach(s => Console.WriteLine("\t{0}", s));
+
+            Console.WriteLine("Filtered List:");
+            var newList = from name in list
+                          where name.Contains("Anne")
+                          select name;
+            newList.ToList<string>().ForEach(s => Console.WriteLine("\t{0}", s));
+
+            Console.WriteLine("Filtered List #2:");
+            var newList2 = list.Where<string>(name => name.Contains("Anne"));
+            newList2.ToList<string>().ForEach(s => Console.WriteLine("\t{0}", s));
         }
     }
 }
