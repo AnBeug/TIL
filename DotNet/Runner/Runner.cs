@@ -25,10 +25,14 @@ namespace TIL
         {
             Console.WriteLine("About to get this started...");
 
-            Console.Write("---- DELEGATES  ----------");
+            Console.WriteLine("---- DELEGATES  ----------");
             Delegates.Main();
 
-            Console.Write("---- LINQ ----------------");
+            Console.WriteLine("---- ANONYMOUS DELEGATES -");
+            AnonymousMethods.Main();
+
+            Console.WriteLine("---- LINQ ----------------");
+            LinqExamples.Main();
 
             // Hold the console until a key press.
             Console.ReadKey();

@@ -28,11 +28,16 @@ namespace TIL
         /// <returns>System.Int32.</returns>
         private delegate int DelegateType(int x);
 
-
         /// <summary>
         /// Mains this instance.
         /// </summary>
-        public void Main()
+        public static void Main()
+        {
+            Simple();
+            OuterVariables();
+        }
+
+        private static void Simple()
         {
             // Instantiate the delegate using an anonymous method.
             DelegateType d = delegate(int k)
@@ -41,6 +46,7 @@ namespace TIL
                     return i;
                 };
 
+            // Now use it.
             int l = 2;
             int j = d(l);
             Console.WriteLine("d({0}) = {1}", l, j);
@@ -48,6 +54,20 @@ namespace TIL
             l = 3;
             j = d(l);
             Console.WriteLine("d({0}) = {1}", l, j);
+        }
+
+        private static void OuterVariables()
+        {
+            int outerNum = 2;
+            Console.WriteLine("Outer num (from before): {0}", outerNum);
+            DelegateType d = delegate(int k)
+                {
+                    outerNum = outerNum + k;
+                    Console.WriteLine("Outer num (from inside):{0}", outerNum);
+                    return k;
+                };
+            int k2 = d(2);
+            Console.WriteLine("Outer num (from after): {0}", outerNum);
         }
     }
 }

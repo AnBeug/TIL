@@ -52,6 +52,10 @@
       <Project>{1fc5c8d8-c0a3-478f-9369-fb5cffbcce53}</Project>
       <Name>Delegates</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Linq\Linq.csproj">
+      <Project>{398321cb-704a-4048-a601-df8e467f53da}</Project>
+      <Name>Linq</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
