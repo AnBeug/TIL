@@ -4,7 +4,7 @@
 
 int     initialedData = 0;
 
-int main(void)
+int main(int argc, char *argv[])
 {
     int uninitializedData;
     pid_t pid;
