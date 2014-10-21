@@ -1,7 +1,9 @@
 package com.anniebeug.til.java.trees;
 
+import com.anniebeug.til.java.trees.contracts.TreeNode;
 
-public class BinaryTreeNode<T> {
+
+public class BinaryTreeNode<T> implements TreeNode<T> {
 	private T value;
 	private BinaryTreeNode<T> parent;
 	private BinaryTreeNode<T> leftChild;
@@ -22,35 +24,46 @@ public class BinaryTreeNode<T> {
 		this.setRightChild(null);
 	}
 	
+	@Override
 	public T getValue() {
 		return this.value;
 	}
 	
+	@Override
 	public void setValue(T value) {
 		this.value = value;
 	}
 
-	public BinaryTreeNode<T> getParent() {
+	@Override
+	public TreeNode<T> getParent() {
 		return parent;
 	}
 
-	public void setParent(BinaryTreeNode<T> parent) {
-		this.parent = parent;
-	}
-
-	public BinaryTreeNode<T> getRightChild() {
+	@Override
+	public TreeNode<T> getRightChild() {
 		return rightChild;
 	}
 
-	public void setRightChild(BinaryTreeNode<T> rightChild) {
-		this.rightChild = rightChild;
-	}
-
-	public BinaryTreeNode<T> getLeftChild() {
+	@Override
+	public TreeNode<T> getLeftChild() {
 		return leftChild;
 	}
 
-	public void setLeftChild(BinaryTreeNode<T> leftChild) {
+	@Override
+	public void setParent(TreeNode<T> parent) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void setRightChild(TreeNode<T> rightChild) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void setLeftChild(TreeNode<T> leftChild) {
+		// TODO Auto-generated method stub
 		this.leftChild = leftChild;
 	}
 	

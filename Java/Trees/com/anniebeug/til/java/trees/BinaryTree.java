@@ -1,6 +1,8 @@
 package com.anniebeug.til.java.trees;
+import com.anniebeug.til.java.trees.contracts.Tree;
+import com.anniebeug.til.java.trees.contracts.TreeNode;
 
-public class BinaryTree<T> {
+public class BinaryTree<T> implements Tree<T> {
 	private BinaryTreeNode<T> root;
 	
 	public BinaryTree() {
@@ -18,5 +20,23 @@ public class BinaryTree<T> {
 
 	public void setRoot(BinaryTreeNode<T> root) {
 		this.root = root;
+	}
+
+	@Override
+	public void insert(T value) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void delete(T value) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public TreeNode<T> find(T value) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }
