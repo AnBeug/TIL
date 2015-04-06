@@ -5,14 +5,14 @@ import com.anniebeug.til.java.trees.contracts.TreeNode;
 
 public class BinaryTreeNode<T> implements TreeNode<T> {
 	private T value;
-	private BinaryTreeNode<T> parent;
-	private BinaryTreeNode<T> leftChild;
-	private BinaryTreeNode<T> rightChild;
+	private TreeNode<T> parent;
+	private TreeNode<T> leftChild;
+	private TreeNode<T> rightChild;
 		
-	public BinaryTreeNode(T value)
+	public BinaryTreeNode(TreeNode<T> parent, T value)
 	{
 		this.value = value;
-		this.setParent(null);
+		this.setParent(parent);
 		this.setLeftChild(null);
 		this.setRightChild(null);
 	}
@@ -51,19 +51,16 @@ public class BinaryTreeNode<T> implements TreeNode<T> {
 
 	@Override
 	public void setParent(TreeNode<T> parent) {
-		// TODO Auto-generated method stub
-		
+		this.parent = parent;
 	}
 
 	@Override
 	public void setRightChild(TreeNode<T> rightChild) {
-		// TODO Auto-generated method stub
-		
+		this.rightChild = rightChild;
 	}
 
 	@Override
 	public void setLeftChild(TreeNode<T> leftChild) {
-		// TODO Auto-generated method stub
 		this.leftChild = leftChild;
 	}
 	

@@ -2,16 +2,27 @@ package com.anniebeug.til.java.trees;
 import com.anniebeug.til.java.trees.contracts.Tree;
 import com.anniebeug.til.java.trees.contracts.TreeNode;
 
-public class BinaryTree<T> implements Tree<T> {
+/**
+ * An implementation of a tree as a binary tree.
+ * Duplicates are excluded.
+ * 
+ * @author asbeug
+ *
+ * @param <T>
+ */
+public class BinaryTree<T extends Comparable<T>> implements Tree<T> {
 	private BinaryTreeNode<T> root;
 	
+	/**
+	 * Instantiates a new Binary tree instance.
+	 */
 	public BinaryTree() {
 		this.root = null;
 	}
 	
 	public BinaryTree(T value)
 	{
-		this.root = new BinaryTreeNode<T>(value);
+		this.root = new BinaryTreeNode<T>(null, value);
 	}
 
 	public BinaryTreeNode<T> getRoot() {
@@ -24,8 +35,11 @@ public class BinaryTree<T> implements Tree<T> {
 
 	@Override
 	public void insert(T value) {
-		// TODO Auto-generated method stub
-		
+		if (root == null) {
+			this.root = new BinaryTreeNode<T>(null, value);
+		} else {
+			this.insertNode(this.root, value);
+		}
 	}
 
 	@Override
@@ -36,7 +50,35 @@ public class BinaryTree<T> implements Tree<T> {
 
 	@Override
 	public TreeNode<T> find(T value) {
-		// TODO Auto-generated method stub
 		return null;
+	}
+	
+	/**
+	 * Insert value recursively.
+	 * @param node
+	 * @param value
+	 */
+	private void insertNode(TreeNode<T> node, T value) {
+		if (node == null) {
+			throw new IllegalArgumentException("Unable to add new node to empty node.");
+		} 
+		// Less than to the left
+		else if (value.compareTo(node.getValue()) < 0) {
+			if (root.getLeftChild() != null) {
+				this.insertNode(root.getLeftChild(), value);
+			} else {
+				node.setLeftChild(new BinaryTreeNode<T>(node, value));
+			}
+		// Greater than to the right
+		} else if (value.compareTo(root.getValue()) > 0) {
+			if (node.getRightChild() != null) {
+				this.insertNode(root.getRightChild(), value);
+			} else {
+				node.setRightChild(new BinaryTreeNode<T>(node, value));
+			}
+		// This value is a duplicate
+		} else {
+			return;
+		}
 	}
 }
