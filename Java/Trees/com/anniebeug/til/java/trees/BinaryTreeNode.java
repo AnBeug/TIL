@@ -2,7 +2,6 @@ package com.anniebeug.til.java.trees;
 
 import com.anniebeug.til.java.trees.contracts.TreeNode;
 
-
 public class BinaryTreeNode<T> implements TreeNode<T> {
 	private T value;
 	private TreeNode<T> parent;
@@ -11,17 +10,10 @@ public class BinaryTreeNode<T> implements TreeNode<T> {
 		
 	public BinaryTreeNode(TreeNode<T> parent, T value)
 	{
-		this.value = value;
 		this.setParent(parent);
 		this.setLeftChild(null);
 		this.setRightChild(null);
-	}
-	
-	public BinaryTreeNode(BinaryTreeNode<T> parent, T value)
-	{
-		this.setParent(parent);
-		this.setLeftChild(null);
-		this.setRightChild(null);
+		this.setValue(value);
 	}
 	
 	@Override
@@ -64,4 +56,7 @@ public class BinaryTreeNode<T> implements TreeNode<T> {
 		this.leftChild = leftChild;
 	}
 	
+	public String toString()	{
+		return "{ value: " + this.getValue() + " }";
+	}
 }

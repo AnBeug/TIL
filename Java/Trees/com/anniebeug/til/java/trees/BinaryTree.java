@@ -13,9 +13,6 @@ import com.anniebeug.til.java.trees.contracts.TreeNode;
 public class BinaryTree<T extends Comparable<T>> implements Tree<T> {
 	private BinaryTreeNode<T> root;
 	
-	/**
-	 * Instantiates a new Binary tree instance.
-	 */
 	public BinaryTree() {
 		this.root = null;
 	}
@@ -64,17 +61,19 @@ public class BinaryTree<T extends Comparable<T>> implements Tree<T> {
 		} 
 		// Less than to the left
 		else if (value.compareTo(node.getValue()) < 0) {
-			if (root.getLeftChild() != null) {
-				this.insertNode(root.getLeftChild(), value);
+			if (node.getLeftChild() != null) {
+				this.insertNode(node.getLeftChild(), value);
 			} else {
 				node.setLeftChild(new BinaryTreeNode<T>(node, value));
+				return;
 			}
 		// Greater than to the right
-		} else if (value.compareTo(root.getValue()) > 0) {
+		} else if (value.compareTo(node.getValue()) > 0) {
 			if (node.getRightChild() != null) {
-				this.insertNode(root.getRightChild(), value);
+				this.insertNode(node.getRightChild(), value);
 			} else {
 				node.setRightChild(new BinaryTreeNode<T>(node, value));
+				return;
 			}
 		// This value is a duplicate
 		} else {
