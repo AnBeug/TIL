@@ -50,6 +50,50 @@ public class BinaryTree<T extends Comparable<T>> implements Tree<T> {
 		return null;
 	}
 	
+	@Override
+	public T findMin() {
+		if (this.root == null) {
+			throw new NullPointerException();
+		}
+		
+		return this.findMinNode(this.root);
+	}
+	
+	private T findMinNode(TreeNode<T> node)
+	{
+		if (node == null) {
+			throw new NullPointerException();
+		} 
+		
+		if (node.getLeftChild() == null) {
+			return node.getValue();
+		} else {
+			return this.findMinNode(node.getLeftChild());
+		}
+	}
+	
+	@Override 
+	public T findMax() {
+		if (this.root == null) {
+			throw new NullPointerException();
+		}
+		
+		return this.findMaxNode(this.root);
+	}
+	
+	public T findMaxNode(TreeNode<T> node)
+	{
+		if (node == null) {
+			throw new NullPointerException();
+		} 
+		
+		if (node.getRightChild() == null) {
+			return node.getValue();
+		} else {
+			return this.findMaxNode(node.getRightChild());
+		}
+	}
+	
 	/**
 	 * Insert value recursively.
 	 * @param node
